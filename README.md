@@ -1,4 +1,13 @@
 # Installation
+First check if npm is there - if not
+```
+sudo apt install npm
+```
+Then in the cloned directory, install dependencies with
+```
+npm
+```
+
 ```
 sudo cp water-meter.service /etc/systemd/system
 
