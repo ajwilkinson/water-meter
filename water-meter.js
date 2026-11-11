@@ -7,14 +7,12 @@ const sensor = new Gpio(2, 'in', 'both', {
 
 const payload = "water,location=Home used=10";
 
-const url="http://192.168.1.20:8086/write?db=water";
+const url="http://workshop.local:8086/write?db=water";
 
 sensor.watch((err, value) => {
     if (err) {
-        console.log(err);
         return;
     }
-    console.log(value);
     if (value===0) {
         request({
             url:url,
@@ -23,12 +21,10 @@ sensor.watch((err, value) => {
         }, (error, response) => {
             if (error) 
                 console.log(error);
-            else 
-                console.log(response.statusCode);
         })
     }
 })
 
-console.log("Ready...");
+console.log("water-meter ready");
 
 
