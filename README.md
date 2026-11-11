@@ -9,7 +9,9 @@ To test use systemctl start and systemctl stop
 
 # Wiring
 The code watches GPIO 2 going to zero - i.e. connecting to ground. So wire up the water meter
-between GPIO2 and ground.
+between GPIO2 and ground - between pins 3 and 6.
+
+![Raspberry Pi 2 Pinout](./raspberry-pi-2-pinout-1024x718.jpg "Raspberry Pi 2 Pinout")
 
 ## workshop configuration
 Influx is in a container called influxdb at version 1.8
