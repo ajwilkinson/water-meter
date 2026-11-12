@@ -22,7 +22,7 @@ from gpiozero import Button
 
 GPIO_PIN = int(os.environ.get("WATER_METER_GPIO", "17"))  # BCM numbering
 DEBOUNCE_SECONDS = 0.05      # 50 ms, same as the original
-URL = "http://workshop.local:8086/write?db=water"
+URL = "http://workshop.lan:8086/write?db=water"
 PAYLOAD = b"water,location=Home used=10"
 HTTP_TIMEOUT = 10            # seconds
 
