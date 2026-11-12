@@ -7,7 +7,7 @@ After=network-online.target avahi-daemon.service
 Type=simple
 # Change to the user you log in as (must be in the "gpio" group,
 # which the default user created at setup already is).
-User=anthony
+User=manager
 Group=gpio
 # lgpio writes notification pipes into its working directory, so give it
 # a writable one (systemd creates /run/water-meter owned by User=).
