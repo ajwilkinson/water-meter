@@ -7,8 +7,13 @@ After=network-online.target avahi-daemon.service
 Type=simple
 # Change to the user you log in as (must be in the "gpio" group,
 # which the default user created at setup already is).
-User=manager
+User=anthony
 Group=gpio
+# lgpio writes notification pipes into its working directory, so give it
+# a writable one (systemd creates /run/water-meter owned by User=).
+RuntimeDirectory=water-meter
+WorkingDirectory=/run/water-meter
+Environment=LG_WD=/run/water-meter
 ExecStart=/usr/bin/python3 /opt/water-meter/water-meter.py
 # Uncomment to use a different BCM pin without editing the script:
 #Environment=WATER_METER_GPIO=17
