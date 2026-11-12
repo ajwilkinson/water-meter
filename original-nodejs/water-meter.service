@@ -1,0 +1,12 @@
+[Unit]
+Description=Water Meter
+After=network-online.target
+[Service] 
+ExecStart=/usr/bin/node water-meter.js
+WorkingDirectory=/home/pi/src/water-meter
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+[Install]
+WantedBy=multi-user.target

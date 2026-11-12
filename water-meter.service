@@ -1,12 +1,20 @@
 [Unit]
-Description=Water Meter
-After=network-online.target
-[Service] 
-ExecStart=/usr/bin/node water-meter.js
-WorkingDirectory=/home/pi/src/water-meter
-StandardOutput=inherit
-StandardError=inherit
+Description=Water meter pulse logger (InfluxDB)
+Wants=network-online.target
+After=network-online.target avahi-daemon.service
+
+[Service]
+Type=simple
+# Change to the user you log in as (must be in the "gpio" group,
+# which the default user created at setup already is).
+User=manager
+Group=gpio
+ExecStart=/usr/bin/python3 /opt/water-meter/water-meter.py
+# Uncomment to use a different BCM pin without editing the script:
+#Environment=WATER_METER_GPIO=17
+Environment=PYTHONUNBUFFERED=1
 Restart=always
-User=pi
+RestartSec=5
+
 [Install]
 WantedBy=multi-user.target
